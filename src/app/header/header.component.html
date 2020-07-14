@@ -1,0 +1,27 @@
+<div class="header-wrapper">
+    <div class="heading">
+        <i class="fas fa-cloud-sun" routerLink="/"></i>
+        <div class="text" routerLink="/">
+            <a> Angular <b>Weather</b></a>
+        </div>
+
+        <div class="text-small">
+            A<b>W</b>
+        </div>
+    </div>
+    <div class="input-container">
+        <label for="city-input">City:</label>
+        <div class="input">
+            <input type="text" name="" id="city-input" placeholder="Enter a City"
+                (input)="getSearch($event.target.value)" (keydown.enter)="onSearch()">
+            <span class="focus-border"></span>
+        </div>
+        <div class="button">
+            <button (click)="onSearch()"><i
+                    class="fas fa-search"></i> <span
+                    class="search-text">Search</span></button>
+            <span class="focus-border"></span>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,35 @@
+@import '../../styles-hosts';
+@import '../../styles-color';
+
+:host{
+    width: 100%;
+    max-width: unset;
+    display: flex;
+    align-items: center;
+}
+
+.weather-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.city-container{
+    width: 100%;
+    font-size: 2rem;
+}
+
+@media (max-width: 600px){
+    .city-container{
+        font-size: 1.5rem;
+    }
+}
+@media (max-width: 500px){
+    .city-container{
+        font-size: 1rem;
+    }
+}
+

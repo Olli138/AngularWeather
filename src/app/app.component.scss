@@ -1,0 +1,14 @@
+@import '../styles-hosts';
+
+:host {
+    max-width: unset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+router-outlet{
+    max-height: unset;
+    display: flex;
+    align-items: center;
+}

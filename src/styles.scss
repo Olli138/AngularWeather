@@ -1,0 +1,21 @@
+@import 'styles-color';
+
+:root{
+    //background: url(../src/img/island-during-golden-hour-and-upcoming-storm-1118873.jpg) no-repeat center center fixed;
+    background-size: cover;
+    background-color: $color-header;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
+    color: #fff;
+}
+
+body{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,8 @@
+<div class="weather-container" *ngIf="data !== undefined">
+    <div class="city-container">
+        <h1>
+            {{data.city}}, {{data.country}}
+        </h1>
+    </div>
+</div>
+<router-outlet></router-outlet>

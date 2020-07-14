@@ -1,0 +1,123 @@
+@import '../../styles-color';
+@import '../../styles-hosts';
+
+:host{
+    width: 100%;
+    max-width: unset;
+}
+
+.header-wrapper{
+    height: 50px;
+    width: 100%;
+    background-color: $color-header;
+    color: $color-text-2;
+    display: grid;
+    grid-template-areas: "header search";
+    align-items: center;    
+    border-bottom: 1px solid grey;
+}
+
+.heading{
+    position: relative;
+    display: flex;
+    grid-area: header;
+    left: 10px;
+
+    .text-small{
+        display: none;
+        z-index: 10;
+        cursor: pointer;
+        outline: none;
+    }
+
+    .text{
+        z-index: 10;
+        cursor: pointer;
+        outline: none;
+    }
+
+    i{
+        z-index: 10;
+        cursor: pointer;
+        outline: none;
+    }
+}
+
+.input-container{
+    grid-area: search;
+    position: absolute;
+    width: 100%;
+    height: inherit;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.input{
+    position: relative;
+    box-sizing: border-box;
+    margin: 5px;
+}
+
+input[type=text], button{
+    outline: none;
+    height: 30px;
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid white;
+    color: $color-text-2;
+}
+
+input[type=text]{
+    width: 20vw;
+}
+
+.focus-border{
+    background-color: $color-signal;
+    position: absolute;
+    bottom: 0; left: 0; width: 0; height: 3px;
+    transition: 0.4s;
+}
+
+input[type=text]:focus ~ .focus-border{
+    width: 100%;
+}
+
+button{
+    cursor: pointer;
+}
+
+.button{
+    position: relative;
+}
+
+button:hover + .focus-border{
+    width: 100%;
+}
+
+@media(max-width: 600px){
+    .input-container{
+        position: relative;
+    }
+    input[type=text]{
+    width: 50%;
+    }  
+}
+
+@media(max-width: 450px){
+    .heading{
+        left: 5px;
+
+        .text-small{
+        display: unset;
+        }
+        .text{
+            display: none;
+        }
+    }
+    .search-text{
+        display: none;
+    }
+}
+
+

@@ -1,0 +1,108 @@
+<div class="simple-weather-container" *ngIf="allData !== undefined">
+
+    <!-- Header -->
+    <div class="second-header">
+        <div class="second-header-button-container">
+            <button
+                class="second-header-button"
+                (click)="onToday()"
+                [ngClass]="activeHeaderBtn === 'today' ? 'active' : ''">Today</button>
+            <button class="second-header-button" (click)="onTomorrow()"
+                [ngClass]="activeHeaderBtn === 'tomorrow' ? 'active' : ''">Tomorrow</button>
+            <button class="second-header-button" (click)="onForecast()"
+                [ngClass]="activeHeaderBtn === 'forecast' ? 'active' : ''">Five Day
+                Forecast</button>
+        </div>
+    </div>
+
+    <!-- Current Weatherlist -->
+    <div class="current-weather" *ngIf="activeHeaderBtn === 'today'">
+        <div class="current-weather-heading">
+            <h1>Current Weather</h1>
+            <p>{{allData.weatherList[0].date}} - {{allData.weatherList[0].time}} Uhr</p>
+        </div>
+        <div class="current-weather-data">
+            <div class="current-weather-temperature">
+                <div class="current-weather-temperature-img"><img
+                        src="http://openweathermap.org/img/wn/{{allData.weatherList[0].weatherIcon}}@2x.png"
+                        alt="Weather-Icon"></div>
+                <div class="current-weather-temperature-temp">
+                    {{allData.weatherList[0].temp_celcius}}°C
+                </div>
+            </div>
+            <div class="current-weather-wind-humidity">
+                <p>
+                    Wind (km/h): {{allData.weatherList[0].windSpeed}}
+                </p>
+                <p>
+                    Humidity: {{allData.weatherList[0].humidity}} %
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Smaller Weather Sections for Today and Tomorrow -->
+    <div *ngIf="activeHeaderBtn !== 'forecast'">
+        <h1>{{allData.dates[i]}}</h1>
+        <div class="single-weather-container">
+            <ng-container *ngFor="let list of allData.weatherList">
+                <div class="single-weather" *ngIf="list.date === allData.dates[i]">
+                    <div class="single-weather-time">
+                        <h4>{{list.time}}</h4>
+                    </div>
+                    <div class="single-weather-data">
+                        <div class="icon-temp">
+                            <div class="icon today">
+                                <img src="http://openweathermap.org/img/wn/{{list.weatherIcon}}@2x.png"
+                                    alt="Weather-Icon">
+                            </div>
+                            <div class="temp">
+                                {{list.temp_celcius | number: '1.0-0'}} °C
+                            </div>
+                        </div>
+                        <p>
+                            Wind: {{list.windSpeed | number: '1.0-1'}} km/h
+                        </p>
+                        <p>
+                            Humidity: {{list.humidity}}%
+                        </p>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+
+
+    <!-- Forecast -->
+    <div class="single-weather-container-forecast" *ngIf="activeHeaderBtn === 'forecast'">
+        <div *ngFor="let allDataDate of allData.dates">
+            <h1>{{allDataDate}}</h1>
+            <div class="forecast-grid">
+                <ng-container *ngFor="let list of allData.weatherList">
+                    <div class="single-weather single-weather-forecast" *ngIf="list.date === allDataDate">
+                        <div class="single-weather-time">
+                            <h4>{{list.time}}</h4>
+                        </div>
+                        <div class="single-weather-data-forecast">
+                            <div class="icon-temp">
+                                <div class="icon">
+                                    <img src="http://openweathermap.org/img/wn/{{list.weatherIcon}}@2x.png"
+                                        alt="Weather-Icon">
+                                </div>
+                                <div class="temp">
+                                    {{list.temp_celcius | number: '1.0-0'}}°C
+                                </div>
+                            </div>
+                            <p>
+                                Wind: {{list.windSpeed | number: '1.0-1'}} km/h
+                            </p>
+                            <p>
+                                Humidity: {{list.humidity}}%
+                            </p>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>
